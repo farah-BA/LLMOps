@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y redis-tools
 WORKDIR /app
 
 # Definiton de la clé API d'openAI
-ENV OPENAI_API_KEY=""
+ENV OPENAI_API_KEY="copier la clé API d'openAI ici"
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
