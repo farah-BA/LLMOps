@@ -1,23 +1,23 @@
 # Utilisez une image de base qui inclut Python
 FROM python:3.10
 
-# Install Redis tools
+# Installez les outils Redis
 RUN apt-get update && apt-get install -y redis-tools
 
-# Set the working directory inside the container
+# Définissez le répertoire de travail dans le conteneur
 WORKDIR /app
 
-ENV OPENAI_API_KEY="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"
+# Definiton de la clé API d'openAI
+ENV OPENAI_API_KEY="clé api d'openAI"
 
-# Copy and install python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy scripts from the src/ directory
+# Copiez le code de l'application dans le conteneur
 COPY src/ .
+
 # Exposez le port sur lequel l'application fonctionne
 EXPOSE 5000
 
 # Commande pour démarrer l'application lorsque le conteneur est lancé
 CMD ["python3", "orchestration.py"]
-
