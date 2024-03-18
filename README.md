@@ -74,9 +74,7 @@ Il faudra s'assurer que tous les pods sont en état "Running" et que les service
 ### Exposer l'API: 
 Il est possible d'accéder à l'API en l'exposant à l'aide de minikube d'une des deux commandes suivantes:
     ```bash
-    minikube service llmops-service 
-    
-    minikube service llmops-service --url
+    minikube service llmops-service || minikube service llmops-service --url
     ```
 
 Cela renverra une URL, qu'il faudra utiliser dans client.py afin d'interagir avec l'API REST. Il est nécéssaire de saisir le choix du modèle et le texte pour le modèle LLM. 
