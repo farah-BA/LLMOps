@@ -60,18 +60,23 @@ ite, vous pouvez pousser votre image avec la commande :
     ```bash
     kubectl apply -f kubernetes/
     ```
+    
 **Vérification du déploiement :** Une fois que les ressources sont déployées, il est possible de vérifier l'état du déploiement en utilisant la commande suivante :
     ```bash
     kubectl get pods
     kubectl get services
     ```
+    
+
 Il faudra s'assurer que tous les pods sont en état "Running" et que les services sont accessibles.
 
-### Exposer l'API: Il est possible d'accéder à l'API en l'exposant à l'aide de minikube d'une des deux commandes suivantes:
+### Exposer l'API: 
+Il est possible d'accéder à l'API en l'exposant à l'aide de minikube d'une des deux commandes suivantes:
     ```bash
     minikube service llmops-service 
     minikube service llmops-service --url
     ```
+
 Cela renverra une URL, qu'il faudra utiliser dans client.py afin d'interagir avec l'API REST. Il est nécéssaire de saisir le choix du modèle et le texte pour le modèle LLM. 
 Ouvrez un nouveau terminal pour lancer client.py avec la commande suivante:
     ```bash
