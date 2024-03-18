@@ -37,6 +37,8 @@ Avant de commencer, assurez-vous d'avoir votre machine :
 4. **Pousser l'image sur une plateforme d'hébergement :** Pour pousser votre image Docker sur une plateforme d'hébergement telle que Docker Hub, vous devez d'abord vous connecter à votre compte Docker Hub :
  ```bash
    docker login
+```
+
 Ensuite, vous pouvez pousser votre image avec la commande :
  ```bash
    docker push nom-de-l-image:tag
