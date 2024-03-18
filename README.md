@@ -43,6 +43,7 @@ Ensuite, vous pouvez pousser votre image avec la commande :
     ```bash
     docker push llmops-image:latest
     ```
+    
  **NB:** Assurez-vous de remplacer nom-de-l-image:tag par le nom et la version de votre image Docker que vous avez utilisée lors de la construction.
 
 
@@ -74,6 +75,7 @@ Il faudra s'assurer que tous les pods sont en état "Running" et que les service
 Il est possible d'accéder à l'API en l'exposant à l'aide de minikube d'une des deux commandes suivantes:
     ```bash
     minikube service llmops-service 
+    
     minikube service llmops-service --url
     ```
 
