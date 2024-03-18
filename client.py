@@ -2,7 +2,7 @@ import requests
 
 data = {
     "model": "llm",
-    "prompt": "que vat 2+2 ?"
+    "prompt": "que vaut 2+2 ?"
 }
 
 # Utilisez l'adresse IP correcte du service llmops-service et le port 80
