@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: orchestration-container
-        image: docker636/llmops:latest
+        image: yourdocker-image:tag
         ports:
         - containerPort: 5000
         env:
