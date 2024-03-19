@@ -27,20 +27,21 @@ Avant de commencer, assurez-vous d'avoir votre machine :
 ## Premiers pas: 
 
 1. **Cloner le dépôt** : Commencez par cloner le dépôt sur votre machine locale en utilisant la commande suivante :
-   ```bash
+   ```
    git clone https://github.com/farah-BA/LLMOps.git
-
+   ```
 2. **Ajout de la clé API d'OpenAI dans le Dockerfile** : Ouvrez votre Dockerfile et ajoutez la clé API d'OpenAI comme une variable d'environnement.
 3. **Construire l'image Docker** : Assurez-vous de remplacer nom-de-l-image:tag par le nom et la version souhaités pour votre image Docker. 
-   ```bash
+   ```
    docker build -t llmops-image:latest .
+   ```
 4. **Pousser l'image sur une plateforme d'hébergement :** Pour pousser votre image Docker sur une plateforme d'hébergement telle que Docker Hub, vous devez d'abord vous connecter à votre compte Docker Hub :
-    ```bash
+    ```
     docker login
     ```
 
-Ensuite, vous pouvez pousser votre image avec la commande :
-    ```bash
+Ensuite, vous pouvez pousser votre image avec la commande :  
+    ```
     docker push llmops-image:latest
     ```
     
@@ -57,33 +58,33 @@ Si on souhaite que Kubernetes utilise l'image construite localement (au lieu de 
 - **redis-deployment.yml et redis-service.yml:** Ces fichiers sont similaires aux fichiers correspondants pour l'application, mais ils concernent le déploiement et le service pour Redis, qui est utilisé comme file d'attente.
 
 Maintenant nous pouvons créer notre deploiement avec la commande suivante:
-ite, vous pouvez pousser votre image avec la commande :
-    ```bash
-    kubectl apply -f kubernetes/
-    ```
-    
+ite, vous pouvez pousser votre image avec la commande :  
+```
+kubectl apply -f kubernetes/
+``` 
+
 **Vérification du déploiement :** Une fois que les ressources sont déployées, il est possible de vérifier l'état du déploiement en utilisant la commande suivante :
-    ```bash
-    kubectl get pods
-    kubectl get services
-    ```
+```
+kubectl get pods
+kubectl get services
+```
     
 
-Il faudra s'assurer que tous les pods sont en état "Running" et que les services sont accessibles.
+Il faudra vérifier que tous les pods sont en état **Running** et que les services sont accessibles.
 
 ### Exposer l'API: 
-Il est possible d'accéder à l'API en l'exposant à l'aide de minikube d'une des deux commandes suivantes:
-    ```bash
-    minikube service llmops-service || minikube service llmops-service --url
-    ```
-
-Cela renverra une URL, qu'il faudra utiliser dans client.py afin d'interagir avec l'API REST. Il est nécéssaire de saisir le choix du modèle et le texte pour le modèle LLM. 
+Il est possible d'accéder à l'API en l'exposant à l'aide de minikube avec une de ces commandes:
+```
+minikube service llmops-service || minikube service llmops-service --url
+```    
+Cela renverra une URL, il donc faudra utiliser dans client.py afin d'interagir avec l'API REST. Il est nécéssaire de saisir le choix du modèle et le texte pour le modèle LLM. 
 Ouvrez un nouveau terminal pour lancer client.py avec la commande suivante:
-    ```bash
-    python client.py
-    ```
+```
+python client.py
+```  
+   
 Et voir les résultats voir dans les logs de du pod en utilisant la commande :
-    ```bash
-    kubectl get pods
-    kubectl logs nom_pod
-    ```
+```
+kubectl get pods
+kubectl logs nom_pod
+```
