@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y redis-tools
 WORKDIR /app
 
 # Definiton de la clé API d'openAI
-ENV OPENAI_API_KEY="copier la clé API d'openAI ici"
+#ENV OPENAI_API_KEY=""
+#ENV HUGGINGFACE_API_KEY=""
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

@@ -2,7 +2,7 @@ import requests
 
 data = {
     "model": "llm",
-    "prompt": "que vaut 2+2 ?"
+    "prompt": "quelle est la capitale de la france?"
 }
 
 # Utilisez l'adresse IP correcte du service llmops-service et le port 80
