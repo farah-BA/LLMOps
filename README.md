@@ -13,8 +13,7 @@ Ce projet vise à fournir une solution complète d'orchestration pour des modèl
 L'application est composée de scripts Python qui interagissent les uns avec les autres pour fournir une expérience utilisateur fluide lors de l'utilisation de différents modèles d'IA. Voici une vue d'ensemble des composants principaux :
 
 * orchestration.py : Constitue le cœur de l'application, intégrant Flask pour fournir une interface API REST. Cette API permet aux utilisateurs de choisir un modèle spécifique, tel que le Langage Model (LLM) ou l'embedding. Lorsqu'un utilisateur soumet une requête pour le modèle LLM, ce script gère la mise en file d'attente dans Redis et déclenche le processus de génération de texte correspondant.
-* llm.py:  Contient la logique du modèle de Langage de Grande Taille (LLM). Ce script utilise l'API OpenAI pour générer des réponses textuelles en fonction des prompts récupérés depuis la file d'attente Redis. De plus, il surveille les métriques d'exécution telles que le temps de réponse à l'aide de MLflow, offrant ainsi une vision détaillée des performances du modèle.
-* embedding.py: Implémente un modèle d'embedding basé sur Word2Vec, un algorithme permettant d'apprendre à intégrer des mots à partir d'un corpus de textes. Les modèles Word2Vec nécessitent beaucoup de texte, par exemple l'ensemble du corpus Wikipédia. Néanmoins, nous démontrerons les principes en utilisant un petit exemple de texte.
+* llm.py: Contient la logique du modèle de Langage de Grande Taille (LLM). Il utilise l'API OpenAI pour générer des réponses textuelles en fonction des prompts récupérés depuis la file d'attente Redis. En cas d'échec de l'API OpenAI, le script bascule automatiquement vers le modèle Flan-UL2 de Hugging Face pour fournir une réponse alternative. De plus, llm.py surveille les métriques d'exécution telles que le temps de réponse à l'aide de MLflow, offrant ainsi une vision détaillée des performances du modèle.
 * client.py: Fournit une interface utilisateur permettant aux utilisateurs d'interagir avec l'API via la ligne de commande. Il facilite l'envoi de requêtes au serveur pour choisir un modèle spécifique et fournir les données nécessaires pour l'exécution du modèle LLM .
 
 ## Prérequis
@@ -30,7 +29,7 @@ Avant de commencer, assurez-vous d'avoir votre machine :
    ```
    git clone https://github.com/farah-BA/LLMOps.git
    ```
-2. **Ajout de la clé API d'OpenAI dans le Dockerfile** : Ouvrez votre Dockerfile et ajoutez la clé API d'OpenAI comme une variable d'environnement.
+2. **Ajouter les clés d'API comme variables d'environnement dans le Dockerfile** : Ouvrez votre Dockerfile et ajoutez la clé API d'OpenAI **OPENAI_API_KEY** et la clé pour l'accès au Hub de Hugging Face **HUGGINGFACE_API_KEY** comme une variable d'environnement.
 3. **Construire l'image Docker** : Assurez-vous de remplacer nom-de-l-image:tag par le nom et la version souhaités pour votre image Docker. 
    ```
    docker build -t llmops-image:latest .
